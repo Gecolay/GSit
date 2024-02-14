@@ -20,15 +20,15 @@ public class GSitCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender Sender, @NotNull Command Command, @NotNull String Label, String[] Args) {
 
-        if(!(Sender instanceof Player)) {
-
-            GPM.getMManager().sendMessage(Sender, "Messages.command-sender-error");
-            return true;
-        }
-
-        Player player = (Player) Sender;
-
         if(Args.length == 0) {
+
+            if(!(Sender instanceof Player)) {
+
+                GPM.getMManager().sendMessage(Sender, "Messages.command-sender-error");
+                return true;
+            }
+
+            Player player = (Player) Sender;
 
             if(!GPM.getPManager().hasPermission(Sender, "Sit", "Sit.*")) {
 
@@ -114,6 +114,14 @@ public class GSitCommand implements CommandExecutor {
 
                 if(GPM.getPManager().hasPermission(Sender, "SitToggle", "Sit.*") && !GPM.getCManager().S_SITMATERIALS.isEmpty()) {
 
+                    if(!(Sender instanceof Player)) {
+
+                        GPM.getMManager().sendMessage(Sender, "Messages.command-sender-error");
+                        return true;
+                    }
+
+                    Player player = (Player) Sender;
+
                     boolean toggle = GPM.getToggleManager().canSit(player.getUniqueId());
 
                     if(Args.length > 1 && Args[1].equalsIgnoreCase("off")) toggle = true;
@@ -138,6 +146,14 @@ public class GSitCommand implements CommandExecutor {
 
                 if(GPM.getPManager().hasPermission(Sender, "PlayerSitToggle", "PlayerSit.*") && GPM.getCManager().PS_ALLOW_SIT) {
 
+                    if(!(Sender instanceof Player)) {
+
+                        GPM.getMManager().sendMessage(Sender, "Messages.command-sender-error");
+                        return true;
+                    }
+
+                    Player player = (Player) Sender;
+
                     boolean toggle = GPM.getToggleManager().canPlayerSit(player.getUniqueId());
 
                     if(Args.length > 1 && Args[1].equalsIgnoreCase("off")) toggle = true;
@@ -157,6 +173,12 @@ public class GSitCommand implements CommandExecutor {
                     }
 
                     break;
+                }
+            case "force":
+
+                if(GPM.getPManager().hasPermission(Sender, "Sit.Force", "Sit.*")) {
+
+
                 }
             default:
 

@@ -74,6 +74,7 @@ permissions:
       GSit.Sit: true
       GSit.SitClick: true
       GSit.SitToggle: true
+      GSit.Force: true
 
   GSit.Sit:
     default: true
@@ -86,6 +87,10 @@ permissions:
   GSit.SitToggle:
     default: true
     description: Toggle Sit ability | Permission
+
+  GSit.Force:
+    default: op
+    description: Force Sit ability | Permission
 
   GSit.PlayerSit.*:
     default: op
